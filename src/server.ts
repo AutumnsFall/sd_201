@@ -18,7 +18,7 @@ app.get('/', function(req, res) {
       { name: 'Moby Dock', organization: "Docker", birth_year: 2013}
     ];
 
-    var tagline = "No programming concept is complete without a cute animal mascot.";
+    var tagline = "No programming concept is THIS IS SPArTA complete without a cute animal mascot.";
 
 
     res.render('index', {
