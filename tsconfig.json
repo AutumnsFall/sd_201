@@ -5,8 +5,11 @@
         "moduleResolution": "NodeNext",
         "esModuleInterop": true,
         "lib": ["ES2022", "DOM"],
+        "types": ["node"],
         "outDir": "./dist",
         "sourceMap": true,
+        "allowImportingTsExtensions": true,
+        "noEmit": true,
     },
     "ts-node": {
         "esm": true,
