@@ -1,9 +1,12 @@
 import { Router } from 'express';
-import { aboutPage, contactFormHandler, landingPage } from './handler.ts';
+import { aboutPage, contactFormHandler, landingPage, landingPageAPI } from './handler.ts';
 
 const router = Router();
 
+router.get('/api', landingPageAPI);
+router.get('/:id', landingPage);
 router.get('/', landingPage);
+
 
 router.get('/about', aboutPage);
 
