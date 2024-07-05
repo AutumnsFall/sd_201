@@ -7,16 +7,13 @@ router.get('/api', landingPageAPI);
 router.get('/:id', landingPage);
 router.get('/', landingPage);
 
-
 router.get('/about', aboutPage);
 
 router.post('/contact_form', contactFormHandler);
 router.get('/contact', (req, res) => {
     res.render('contact', {
-        name: ''
+        name: '',
     });
 });
-
-
 
 export default router;
