@@ -8,16 +8,17 @@
     "fix": "eslint src/**/*.ts --fix",
     "build": "tsc",
     "start": "tsx ./src/server.ts",
-    "nodemon": "nodemon"
+    "local": "nodemon" 
   },
   "dependencies": {
-    "@types/node": "^20.14.2",
     "ejs": "^3.1.10",
     "express": "^4.19.2",
+    "mysql2": "^3.10.3",
     "typescript": "^5.4.5"
   },
   "devDependencies": {
     "@types/express": "^4.17.21",
+    "@types/node": "^20.14.11",
     "@typescript-eslint/parser": "^7.15.0",
     "eslint": "^8.57.0",
     "eslint-config-prettier": "^9.1.0",

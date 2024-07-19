@@ -1,4 +1,5 @@
 import { Request, Response } from 'express';
+import { getUsers } from './database/dao/User.ts';
 
 export function landingPage(req: Request, res: Response) {
     try {
@@ -70,6 +71,19 @@ export const contactFormHandler = (req: Request, res: Response) => {
         res.render('contact', {
             name: req.body.teacher_name,
         });
+    } catch (error) {
+        console.error(error);
+        res.render('error', {
+            errorMsg: error.message,
+        });
+    }
+};
+
+export const getAllUsers = async (req: Request, res: Response) => {
+    try {
+        const users = await getUsers();
+        console.log('Users route', users);
+        res.json(users);
     } catch (error) {
         console.error(error);
         res.render('error', {
