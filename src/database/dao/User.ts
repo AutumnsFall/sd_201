@@ -12,18 +12,17 @@ export const getUserById = async (id: number): Promise<User> => {
 };
 
 export const searchUsers = async (search: string): Promise<User[]> => {
-
     const result: User[] = (
         await connection.query('SELECT * FROM users WHERE name LIKE ? OR email LIKE ?', [`%${search}%`, `%${search}%`])
     )?.[0] as User[];
     return result;
 };
 
-export const createUser = async (name: string, email: string, age: number): Promise<boolean> => {
+export const createUser = async (name: string, email: string, age: number): Promise<number> => {
     const result = await connection.execute('INSERT INTO users (name, email, age) VALUES (?, ?, ?)', [
         name,
         email,
         age,
     ]);
-    return true;
+    return (result[0] as any).insertId;
 };
