@@ -4,8 +4,8 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "eslint src/**/*.ts",
-    "fix": "eslint src/**/*.ts --fix",
+    "lint": "eslint src/**/**/*.ts",
+    "fix": "eslint src/**/**/*.ts --fix",
     "build": "tsc",
     "start": "tsx ./src/server.ts",
     "local": "nodemon" 

@@ -1,9 +1,21 @@
 import { Router } from 'express';
-import { aboutPage, contactFormHandler, getAllUsers, landingPage, landingPageAPI } from './handler.ts';
+import {
+    aboutPage,
+    contactFormHandler,
+    createUserRouteHandler,
+    getAllUsersRouteHandler,
+    getUserByIdRouteHandler,
+    landingPage,
+    landingPageAPI,
+    searchUserRouteHandler,
+} from './handler.ts';
 
 const router = Router();
 
-router.get('/users', getAllUsers);
+router.get('/users/search', searchUserRouteHandler);
+router.post('/users', createUserRouteHandler);
+router.get('/users/:id', getUserByIdRouteHandler);
+router.get('/users', getAllUsersRouteHandler);
 
 router.get('/about', aboutPage);
 

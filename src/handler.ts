@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { getUsers } from './database/dao/User.ts';
+import { createUser, getUserById, getUsers, searchUsers } from './database/dao/User.ts';
 
 export function landingPage(req: Request, res: Response) {
     try {
@@ -79,15 +79,49 @@ export const contactFormHandler = (req: Request, res: Response) => {
     }
 };
 
-export const getAllUsers = async (req: Request, res: Response) => {
+export const getAllUsersRouteHandler = async (req: Request, res: Response) => {
     try {
         const users = await getUsers();
-        console.log('Users route', users);
         res.json(users);
     } catch (error) {
-        console.error(error);
         res.render('error', {
             errorMsg: error.message,
         });
     }
 };
+
+export const getUserByIdRouteHandler = async (req: Request, res: Response) => {
+    try {
+        const { id } = req.params;
+        const users = await getUserById(+id);
+        res.json(users);
+    } catch (error) {
+        res.render('error', {
+            errorMsg: error.message,
+        });
+    }
+};
+
+export const searchUserRouteHandler = async (req: Request, res: Response) => {
+    try {
+        const { keyword } = req.query;
+        const users = await searchUsers(keyword.toString());
+        res.json(users);
+    } catch (error) {
+        res.render('error', {
+            errorMsg: error.message,
+        });
+    }
+};
+
+export const createUserRouteHandler = async (req: Request, res: Response) => {
+    try {
+        const { name, email, age } = req.body;
+        const user = await createUser(name, email, age);
+        res.json(user);
+    } catch (error) {
+        res.render('error', {
+            errorMsg: error.message,
+        });
+    }
+}
